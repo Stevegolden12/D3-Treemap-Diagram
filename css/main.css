@@ -1,0 +1,51 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 10px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  text-align: center;
+  width: 960px;
+  height: 600px;
+  background-color: white;
+}
+
+.legend {
+  position: relative;
+  right: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+  .container h1 {
+    align-self: center;
+  }
+
+.controls {
+  align-self: center;
+}
+
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  padding: 5px;
+  font: 12px sans-serif;
+  background: lightsteelblue;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
+}
