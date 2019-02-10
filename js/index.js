@@ -1,6 +1,6 @@
 const padding = { left: 10, top: 10, right: 10, bottom: 20 }
 const width = 1000;
-const height = 960;
+const height = 500;
 
 let legendContainer;
 let container;
@@ -108,6 +108,27 @@ function render(data) {
     return self.indexOf(category) === index;
   })
 
- 
+  legendContainer = d3.select('.legend').append('svg')
+    .attr('width', width)
+    .attr('height', height / 4)
+
+
+  let legend = legendContainer.append('g')
+    .selectAll('g')
+    .data(categories)
+    .enter().append('g');
+
+  legend.append('rect')
+    .attr('width', 15)
+    .attr('height', 15)
+    .attr('x', (d, i) => position = (85) * i)
+    .attr('y', 80)
+    .attr('fill', (d) => color(d));
+
+  legend.append('text')
+    .attr('transform', 'translate(0, 10)')
+    .attr('x', (d, i) => position = (85) * i)
+    .attr('y', 95)
+    .text((d => d))
 
 }
