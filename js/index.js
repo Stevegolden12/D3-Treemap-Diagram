@@ -44,9 +44,30 @@ function render_data(error, kick, movie, video, user_input) {
 }
 /* Data rendering */
 function render(data) {
+  let titleName = data.name;
+  let subtitle = data.name + " categories";
+
+  switch (data.name) {
+    case "Kickstarter":
+      titleName = data.name;
+      subtitle = "Top 100 Most Pledged Kickstarter Campaigns Grouped By Category"
+      break;
+    case "Movies":
+      titleName = data.name;
+      subtitle = "Top 100 Highest Grossing Movies Grouped By Genre"
+      break;
+    case "Video Game Sales Data Top 100":
+      titleName = "Video Games";
+      subtitle = "Top 100 Most Sold Video Games Grouped by Platform"
+      break;
+  }
+  document.querySelector("#title").innerHTML = titleName;
+  document.querySelector("#subtitle").innerHTML = subtitle;
+
   container = d3.select('.graph').append('svg')
     .attr('width', width)
-    .attr('height', height);
+    .attr('height', height)
+    .attr("id", "description");
 
   let root = d3.hierarchy(data)
     .sum((d) => d.value)
@@ -72,6 +93,10 @@ function render(data) {
   let tile = cell.append("rect")
     .attr("width", (d) => d.x1 - d.x0)
     .attr("height", (d) => d.y1 - d.y0)
+    .attr("class", "tile")
+    .attr("data-name","testing")
+    .attr("data-category", "testing")
+    .attr("data-value", "testing")
     .attr('fill', (d) => color(d.data.category))
     .on("mousemove", (d) => {
       tooltip_block.style("opacity", 0.9);
@@ -108,7 +133,7 @@ function render(data) {
     return self.indexOf(category) === index;
   })
 
-  legendContainer = d3.select('.legend').append('svg')
+  legendContainer = d3.select('#legend').append('svg')
     .attr('width', width)
     .attr('height', height / 4)
 
@@ -121,6 +146,7 @@ function render(data) {
   legend.append('rect')
     .attr('width', 15)
     .attr('height', 15)
+    .attr("class","legend-item")
     .attr('x', (d, i) => position = (85) * i)
     .attr('y', 80)
     .attr('fill', (d) => color(d));
