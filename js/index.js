@@ -44,8 +44,9 @@ function render_data(error, kick, movie, video, user_input) {
 }
 /* Data rendering */
 function render(data) {
-  let titleName = data.name;
-  let subtitle = data.name + " categories";
+  /* Setting variable and default values */
+  let titleName = "Kickstarter";
+  let subtitle = "Top 100 Most Pledged Kickstarter Campaigns Grouped By Category";
 
   switch (data.name) {
     case "Kickstarter":
@@ -148,13 +149,13 @@ function render(data) {
     .attr('height', 15)
     .attr("class","legend-item")
     .attr('x', (d, i) => position = (85) * i)
-    .attr('y', 80)
+    .attr('y', 10)
     .attr('fill', (d) => color(d));
 
   legend.append('text')
     .attr('transform', 'translate(0, 10)')
     .attr('x', (d, i) => position = (85) * i)
-    .attr('y', 95)
+    .attr('y', 25)
     .text((d => d))
 
 }

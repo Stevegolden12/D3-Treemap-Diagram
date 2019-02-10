@@ -4,7 +4,7 @@
 
 html,
 body {
-  height: 100%;
+  min-height: 500px;
   margin: 0;
   display: flex;
   justify-content: center;
@@ -33,12 +33,10 @@ button:hover {
 .container {
   display: flex;
   text-align: center;
-  width: 960px;
-  height: 600px;
+  width: 1000px;
+  height: 500px;
   background-color: white;
 }
-
-
 
 .container {
   display: flex;
@@ -66,9 +64,5 @@ div.tooltip {
 }
 
 #legend {
-  position: relative;
-  right: 0;
-  top: 65px;
-  display: flex;
-  align-content: center;
+
 }
